@@ -1,0 +1,1 @@
+SELECT "id","nome_do_usuario","email" FROM "Usuario" WHERE id = ?;
