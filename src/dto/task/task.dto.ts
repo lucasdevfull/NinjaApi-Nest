@@ -14,5 +14,5 @@ export class CreateTaskDto {
 export class TaskDto extends CreateTaskDto {
   @ApiProperty({ example: 'false' })
   @IsBoolean()
-  status: boolean;
+  status?: boolean;
 }

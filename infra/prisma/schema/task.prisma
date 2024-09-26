@@ -1,0 +1,8 @@
+model Task {
+  id      Int      @id @default(autoincrement())
+  title   String   @map("titulo")
+  content String?  @map("conteudo")
+  status  Boolean  @default(false)@map("status")
+
+  @@map("Tarefa")
+}

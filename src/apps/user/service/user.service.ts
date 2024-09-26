@@ -13,17 +13,17 @@ export class UserService {
   ) {}
 
   async listUsers() {
-    return this.prisma.user.findMany();
+    return await this.prisma.user.findMany();
   }
   async findByEmail(email: string) {
-    return this.prisma.user.findFirst({ where: { email: email } });
+    return await this.prisma.user.findFirst({ where: { email: email } });
   }
   async createUser(data: UserDto) {
     const password = await this.password.passwordHash(
       data.password,
       randomInt(10, 16),
     );
-    return this.prisma.user.create({
+    return await this.prisma.user.create({
       data: {
         username: data.username,
         email: data.email,
