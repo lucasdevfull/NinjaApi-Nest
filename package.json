@@ -9,6 +9,8 @@
     "schema": "infra/prisma/schema"
   },
   "scripts": {
+    "sql": "prisma generate --sql",
+    "prisma": "prisma generate",
     "prebuild": "nest build --webpack --webpackPath webpack-hmr.config.js --watch",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
@@ -34,6 +36,7 @@
     "bcrypt": "^5.1.1",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.1",
+    "dotenv": "^16.4.5",
     "projeto-nest": "file:",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1"
@@ -43,11 +46,11 @@
     "@nestjs/schematics": "^10.1.4",
     "@nestjs/testing": "^10.4.4",
     "@swc/cli": "^0.4.0",
-    "@swc/core": "^1.7.28",
+    "@swc/core": "^1.7.35",
     "@types/bcrypt": "^5.0.2",
     "@types/express": "^4.17.21",
     "@types/jest": "^29.5.13",
-    "@types/node": "^20.16.9",
+    "@types/node": "^20.16.11",
     "@types/supertest": "^6.0.2",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
     "@typescript-eslint/parser": "^7.18.0",
@@ -64,7 +67,7 @@
     "ts-loader": "^9.5.1",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
-    "typescript": "^5.6.2",
+    "typescript": "^5.6.3",
     "webpack": "^5.95.0",
     "webpack-node-externals": "^3.0.0"
   },
