@@ -23,10 +23,10 @@ export class AuthController {
   login(@Body() data: LoginDto) {
     return this.auth.authentication(data);
   }
-  @ApiBearerAuth()
   @ApiUnauthorizedResponse({ description: 'Unauthorized' })
   @ApiOkResponse({ description: 'Logout successful' })
   @HttpCode(HttpStatus.NO_CONTENT)
+  @ApiBearerAuth()
   @Post('logout')
   logout(@Body() data: LogoutDto) {
     return this.auth.logout(data.token);

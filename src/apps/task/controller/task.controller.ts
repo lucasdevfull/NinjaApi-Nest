@@ -28,62 +28,62 @@ import {
 export class TaskController {
   constructor(private readonly task: TaskService) {}
 
-  @ApiBearerAuth()
   @ApiUnauthorizedResponse({ description: 'Unauthorized' })
   @ApiOkResponse({ type: TaskDto, isArray: true })
-  @Get()
   @HttpCode(HttpStatus.OK)
+  @ApiBearerAuth()
+  @Get()
   list() {
     return this.task.list();
   }
 
-  @ApiBearerAuth()
-  @ApiBody({ type: CreateTaskDto })
-  @ApiUnauthorizedResponse({ description: 'Unauthorized' })
-  @ApiOkResponse({ type: TaskDto })
   @ApiBadRequestResponse({ description: 'Task already exists' })
-  @Post()
+  @ApiUnauthorizedResponse({ description: 'Unauthorized' })
+  @ApiBody({ type: CreateTaskDto })
+  @ApiOkResponse({ type: TaskDto })
   @HttpCode(HttpStatus.CREATED)
+  @ApiBearerAuth()
+  @Post()
   create(@Body() data: CreateTaskDto) {
     return this.task.create(data);
   }
-  @ApiBearerAuth()
   @ApiNotFoundResponse({ description: 'Task not found' })
   @ApiOkResponse({ type: TaskDto })
-  @Get(':id')
   @HttpCode(HttpStatus.OK)
+  @ApiBearerAuth()
+  @Get(':id')
   getTask(@Param('id', ParseIntPipe) id: number) {
     return this.task.findTask(id);
   }
 
-  @ApiBearerAuth()
+  @ApiBadRequestResponse({ description: 'Task already exists' })
+  @ApiUnauthorizedResponse({ description: 'Unauthorized' })
   @ApiNotFoundResponse({ description: 'Task not found' })
   @ApiOkResponse({ type: TaskDto })
   @ApiBody({ type: TaskDto })
-  @ApiBadRequestResponse({ description: 'Task already exists' })
-  @ApiUnauthorizedResponse({ description: 'Unauthorized' })
-  @Put(':id')
   @HttpCode(HttpStatus.OK)
+  @ApiBearerAuth()
+  @Put(':id')
   update(@Param('id', ParseIntPipe) id: number, @Body() data: TaskDto) {
     return this.task.update(id, data);
   }
 
-  @ApiBearerAuth()
+  @ApiUnauthorizedResponse({ description: 'Unauthorized', })
   @ApiNotFoundResponse({ description: 'Task not found' })
-  @ApiUnauthorizedResponse({ description: 'Unauthorized' })
   @ApiNoContentResponse({ description: 'Task deleted' })
-  @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
+  @ApiBearerAuth()
+  @Delete(':id')
   delete(@Param('id', ParseIntPipe) id: number) {
     return this.task.delete(id);
   }
 
-  @ApiBearerAuth()
-  @ApiNotFoundResponse({ description: 'Task not found' })
   @ApiUnauthorizedResponse({ description: 'Unauthorized' })
+  @ApiNotFoundResponse({ description: 'Task not found' })
   @ApiOkResponse({ type: TaskDto })
-  @Put(':id/completed')
   @HttpCode(HttpStatus.OK)
+  @Put(':id/completed')
+  @ApiBearerAuth()
   completed(@Param('id') id: number) {
     return this.task.completed(id);
   }
